@@ -8,9 +8,10 @@ def is_pal(s):
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         check_len = len(s)
-        while check_len:
+        while check_len > 1:
             for start in range(len(s) - check_len + 1):
                 end = start + check_len
                 if is_pal(s[start:end]):
                     return s[start:end]
             check_len -= 1
+        return s[0]
