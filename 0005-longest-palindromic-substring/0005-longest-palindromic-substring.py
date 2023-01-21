@@ -1,10 +1,8 @@
 def is_pal(s):
-    i = 0
-    while i < len(s) // 2:
-        if s[i] != s[-1 - i]:
-            return False
-        i += 1
-    return True
+    if s == s[::-1]:
+        return True
+    else:
+        return False
 
 
 class Solution:
