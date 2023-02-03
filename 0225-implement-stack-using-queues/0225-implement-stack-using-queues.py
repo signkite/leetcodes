@@ -1,25 +1,31 @@
 class MyStack:
-
     def __init__(self):
-        self.values = []
-
+        self.dq = collections.deque()
+        self.temp = collections.deque()
+        
     def push(self, x: int) -> None:
-        self.values.append(x)
+        self.dq.append(x)
         
     def pop(self) -> int:
-        if self.values:
-            return self.values.pop()
+        if self.dq:
+            while len(self.dq) > 1:
+                self.temp.append(self.dq.popleft())
+            
+            val = self.dq.popleft()
+            self.dq = self.temp.copy()
+            self.temp.clear()
+            return val
         else:
             return None
 
     def top(self) -> int:
-        if self.values:
-            return self.values[-1]
+        if self.dq:
+            return self.dq[-1]
         else:
             return None
 
     def empty(self) -> bool:
-        if self.values:
+        if self.dq:
             return False
         else:
             return True
