@@ -15,10 +15,10 @@ class Solution:
             
             visited.append(dpt)
             for dst in graph[dpt]:
-                if dst in checked:
-                    continue
-                elif dpt in checked:
-                    return False
+                # if dst in checked:
+                #     continue
+                # elif dpt in checked:
+                #     return False
                 
                 if not dfs(dst):
                     return False
